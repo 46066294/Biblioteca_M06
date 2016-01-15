@@ -98,8 +98,11 @@ public class createdb {
 
             stmt = c.createStatement();
             String sql = "CREATE TABLE PRESTEC " +
-                    "(ID_SOCI       INT REFERENCES SOCIS (ID_SOCI) NOT NULL," +
-                    " ID_LLIBRE     INT REFERENCES LLIBRES (ID_LLIBRE) NOT NULL)";
+                    "(ID_PRESTEC    INT PRIMARY KEY                    NOT NULL," +
+                    " ID_SOCI       INT REFERENCES SOCIS (ID_SOCI)     NOT NULL," +
+                    " ID_LLIBRE     INT REFERENCES LLIBRES (ID_LLIBRE) NOT NULL," +
+                    " DATA_INICI    DATE                               NOT NULL," +
+                    " DATA_FINAL    DATE                               NOT NULL)";
             stmt.executeUpdate(sql);
             stmt.close();
             c.close();

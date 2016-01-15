@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="3206005465">
+  <component name="DataSourceManagerImpl" format="xml" hash="2787359998">
     <data-source source="LOCAL" name="PostgreSQL - biblioHibernate@192.168.1.111" uuid="587c9a9c-62dc-4744-ba23-283c8b8a55c0">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
