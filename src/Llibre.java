@@ -1,51 +1,46 @@
-import org.hibernate.annotations.Entity;
-import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Date;
 
 /**
  * Created by Mat on 13/01/2016.
  */
 @Entity
+@Table(name="llibre")
 public class Llibre implements Serializable{
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    @Type(type="integer")
-    @Column(name="ID_LLIBRE")
-    private Integer id_llibre = null;
+    //@Column(name="ID_LLIBRE")
+    private Integer id_llibre;
 
-    @Lob
-    @Column(name="TITOL")
+    //@Lob
+    //@Column(name="TITOL")
     private String titol = null;
 
-    @Type(type="integer")
-    @Column(name="N_EXEMPLARS")
+    //@Column(name="N_EXEMPLARS")
     private Integer nExemplars = null;
 
-    @Lob
-    @Column(name="EDITORIAL")
+    //@Lob
+    //@Column(name="EDITORIAL")
     private String editorial = null;
 
-    @Type(type="integer")
-    @Column(name="PAGINES")
+    //@Column(name="PAGINES")
     private Integer pagines = null;
 
-    @Temporal(TemporalType.DATE)
-    @Column(name="ANY_EDICIO")
-    private Date any_edicio = null;
+    //@Temporal(TemporalType.DATE)
+    //@Column(name="ANY_EDICIO")
+    private Integer any_edicio = null;
 
 
     public Llibre(){
     }
 
 
-    public Llibre(Integer id_llibre, String titol, Integer nExemplars,
-                  String editorial, Integer pagines, Date any_edicio){
+    public Llibre(/*Integer id_llibre,*/ String titol, Integer nExemplars,
+                  String editorial, Integer pagines, Integer any_edicio){
 
-        this.id_llibre = id_llibre;
+        //this.id_llibre = id_llibre;
         this.titol = titol;
         this.nExemplars = nExemplars;
         this.editorial = editorial;
@@ -95,11 +90,11 @@ public class Llibre implements Serializable{
         this.pagines = pagines;
     }
 
-    public Date getAny_edicio() {
+    public Integer getAny_edicio() {
         return any_edicio;
     }
 
-    public void setAny_edicio(Date any_edicio) {
+    public void setAny_edicio(Integer any_edicio) {
         this.any_edicio = any_edicio;
     }
 

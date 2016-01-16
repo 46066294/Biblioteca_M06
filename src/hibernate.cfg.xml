@@ -5,7 +5,7 @@
 <hibernate-configuration>
     <session-factory>
         <property name="connection.url">
-            jdbc:postgresql://192.168.1.111:5432/newpokehb
+            jdbc:postgresql://192.168.1.111:5432/biblioHibernate
         </property>
         <property name="connection.driver_class">
             org.postgresql.Driver
@@ -16,6 +16,13 @@
         <property name="connection.password">
             marc
         </property>
+
+        <!-- Drop and re-create the database schema on startup -->
+        <property name="hbm2ddl.auto">create</property>
+
+        <mapping class="Llibre" />
+        <mapping class="Soci" />
+        <mapping class="Prestec" />
         <!--<mapping resource="Pokemon.hbm.xml"/>-->
         <!-- DB schema will be updated if needed -->
         <!-- <property name="hbm2ddl.auto">update</property> -->

@@ -14,7 +14,7 @@ import java.util.Date;
  * Created by Mat on 16/01/2016.
  */
 public class Controller {
- 
+
     @FXML
     Button bAltaLlibre = new Button("Alta llibre");
     @FXML
@@ -41,6 +41,20 @@ public class Controller {
                     " EDITORIAL     TEXT              NOT NULL," +
                     " PAGINES       INT               NOT NULL," +
                     " ANY_EDICIO    DATE              NOT NULL)";*/
+
+    @FXML
+    TextField tfTitolLlibre = new TextField();
+    @FXML
+    TextField tfNombreExemplars = new TextField();
+    @FXML
+    TextField tfEditorial = new TextField();
+    @FXML
+    TextField tfPagines = new TextField();
+    @FXML
+    TextField tfAny = new TextField();
+    @FXML
+    Button btAccepta = new Button("Accepta");
+
     String titol;
     Integer nExemplars;
     String editorial;
@@ -55,19 +69,7 @@ public class Controller {
         stg.setScene(new Scene(p, 600, 400));
         stg.show();
 
-        TextField tfTitolLlibre = new TextField();
-        TextField tfNombreExemplars = new TextField();
-        TextField tfEditorial = new TextField();
-        TextField tfPagines = new TextField();
-        TextField tfAny = new TextField();
-        Button btAccepta = new Button("Accepta");
-
-        titol = tfTitolLlibre.getText();
-        nExemplars = Integer.valueOf(tfNombreExemplars.getText());
-        editorial = tfEditorial.getText();
-        pagines = Integer.valueOf(tfPagines.getText());
-        any = Integer.valueOf(tfAny.getText());
-
+        //System.out.println(titol + " :: " + nExemplars + " :: " + editorial + " :: " + pagines + " :: " + any);
     }
 
     public void  fSortir(){
@@ -75,6 +77,19 @@ public class Controller {
     }
 
     public void fAltaLlibre() {
+        //System.out.println(titol + " :: " + nExemplars + " :: " + editorial + " :: " + pagines + " :: " + any);
+
+
+        titol = tfTitolLlibre.getText();
+        nExemplars = Integer.valueOf(tfNombreExemplars.getText());
+        editorial = tfEditorial.getText();
+        pagines = Integer.valueOf(tfPagines.getText());
+        any = Integer.valueOf(tfAny.getText());
+
+        System.out.println(titol + " :: " + nExemplars + " :: " + editorial + " :: " + pagines + " :: " + any);
+        //System.out.println(titol);
+
         DataAccessObject.fDAOaltaLlibre(titol, nExemplars, editorial, pagines, any);
     }
+
 }

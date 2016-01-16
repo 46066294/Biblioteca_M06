@@ -49,7 +49,7 @@ public class createdb {
                     " N_EXEMPLARS   INT               NOT NULL," +
                     " EDITORIAL     TEXT              NOT NULL," +
                     " PAGINES       INT               NOT NULL," +
-                    " ANY_EDICIO    DATE              NOT NULL)";
+                    " ANY_EDICIO    INT               NOT NULL)";
             stmt.executeUpdate(sql);
             stmt.close();
             c.close();
