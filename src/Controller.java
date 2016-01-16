@@ -14,7 +14,7 @@ import java.util.Date;
  * Created by Mat on 16/01/2016.
  */
 public class Controller {
-
+ 
     @FXML
     Button bAltaLlibre = new Button("Alta llibre");
     @FXML
