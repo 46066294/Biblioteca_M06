@@ -1,4 +1,6 @@
 
+import com.sun.istack.internal.NotNull;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -6,34 +8,39 @@ import java.io.Serializable;
  * Created by Mat on 13/01/2016.
  */
 @Entity
-@Table(name="llibre")
+//@Table(name="llibre")
 public class Llibre implements Serializable{
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    //@Column(name="ID_LLIBRE")
+    @Column(name="id_llibre")
+    @NotNull
     private Integer id_llibre;
 
     //@Lob
-    //@Column(name="TITOL")
+    @Column(name="titol")
     private String titol = null;
 
     //@Column(name="N_EXEMPLARS")
     private Integer nExemplars = null;
 
     //@Lob
-    //@Column(name="EDITORIAL")
+    @Column(name="editorial")
     private String editorial = null;
 
-    //@Column(name="PAGINES")
+    @Column(name="pagines")
     private Integer pagines = null;
 
     //@Temporal(TemporalType.DATE)
-    //@Column(name="ANY_EDICIO")
+    @Column(name="any_edicio")
     private Integer any_edicio = null;
 
 
     public Llibre(){
+    }
+
+    public Llibre(Integer id){
+        this.id_llibre = id;
     }
 
 
@@ -41,6 +48,17 @@ public class Llibre implements Serializable{
                   String editorial, Integer pagines, Integer any_edicio){
 
         //this.id_llibre = id_llibre;
+        this.titol = titol;
+        this.nExemplars = nExemplars;
+        this.editorial = editorial;
+        this.pagines = pagines;
+        this.any_edicio = any_edicio;
+    }
+
+    public Llibre(Integer id_llibre, String titol, Integer nExemplars,
+                  String editorial, Integer pagines, Integer any_edicio){
+
+        this.id_llibre = id_llibre;
         this.titol = titol;
         this.nExemplars = nExemplars;
         this.editorial = editorial;

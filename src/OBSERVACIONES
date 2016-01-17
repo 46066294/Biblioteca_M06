@@ -38,10 +38,19 @@ https://www.youtube.com/watch?v=cp38pVyS5es
 
 -------------------------------------------------------------------------------
 
-IMPORTANTE: (TI`POS BASICOS)
+IMPORTANTE: (TIPOS BASICOS)
 http://cursohibernate.es/doku.php?id=unidades:04_claves_primarias_y_tipos_datos:01_tipos_basicos
 
 -------------------------------------------------------------------------------
 Creacion de tablas con hibernate
 
 http://felinfo.blogspot.com.es/2009/05/creacion-automatica-de-tablas-en.html
+
+-------------------------------------------------------------------------------
+
+CREATE UPDATE DELETE info util:
+
+http://www.tutorialspoint.com/hibernate/hibernate_query_language.htm
+
+-------------------------------------------------------------------------------
+

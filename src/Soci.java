@@ -1,3 +1,4 @@
+import com.sun.istack.internal.NotNull;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
@@ -11,28 +12,29 @@ public class Soci implements Serializable {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    @Type(type="integer")
-    //@Column(name="ID_soci")
+    @NotNull
+    //@Type(type="integer")
+    @Column(name="id_soci")
     private Integer id_soci = null;
 
-    @Lob
-    //@Column(name="NOM")
+    //@Lob
+    @Column(name="nom_soci")
     private String nom_soci = null;
 
-    @Lob
-    //@Column(name="COGNOM")
+    //@Lob
+    @Column(name="cognom_soci")
     private String cognom_soci = null;
 
-    @Type(type="integer")
-    //@Column(name="EDAT")
+    //@Type(type="integer")
+    @Column(name="edat")
     private Integer edat = null;
 
-    @Lob
-    //@Column(name="DIRECCIO")
+    //@Lob
+    @Column(name="direccio")
     private String direccio = null;
 
-    @Lob
-    //@Column(name="TELEFON")
+    //@Lob
+    @Column(name="telefon")
     private String telefon = null;
 
     public Soci(Integer id_soci, String nom_soci,
@@ -44,6 +46,20 @@ public class Soci implements Serializable {
         this.edat = edat;
         this.direccio = direccio;
         this.telefon = telefon;
+    }
+
+    public Soci(String nom_soci,
+                String cognom_soci, Integer edat, String direccio, String telefon){
+
+        this.nom_soci = nom_soci;
+        this.cognom_soci = cognom_soci;
+        this.edat = edat;
+        this.direccio = direccio;
+        this.telefon = telefon;
+    }
+
+    public  Soci(Integer idSoci){
+        this.id_soci = idSoci;
     }
 
     public  Soci(){}

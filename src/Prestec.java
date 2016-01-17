@@ -1,3 +1,4 @@
+import com.sun.istack.internal.NotNull;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
@@ -12,6 +13,7 @@ public class Prestec implements Serializable {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @NotNull
     //@Column(name="ID_PRESTEC")
     private Integer id_prestec = null;
 

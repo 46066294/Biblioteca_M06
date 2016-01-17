@@ -33,14 +33,9 @@ public class Controller {
     @FXML
     Button bSortir = new Button("Sortir");
 
-    /*
-    * String sql = "CREATE TABLE LLIBRES " +
-                    "(ID_LLIBRE     INT PRIMARY KEY   NOT NULL," +
-                    " TITOL         TEXT              NOT NULL," +
-                    " N_EXEMPLARS   INT               NOT NULL," +
-                    " EDITORIAL     TEXT              NOT NULL," +
-                    " PAGINES       INT               NOT NULL," +
-                    " ANY_EDICIO    DATE              NOT NULL)";*/
+
+    @FXML
+    TextField tfId = new TextField();
 
     @FXML
     TextField tfTitolLlibre = new TextField();
@@ -55,12 +50,40 @@ public class Controller {
     @FXML
     Button btAccepta = new Button("Accepta");
 
-    String titol;
-    Integer nExemplars;
-    String editorial;
-    Integer pagines;
-    Integer any;
+    @FXML
+    TextField tfIdLlibre = new TextField();
+//----------------------------------------------------------------------------
+    @FXML
+    TextField tfNomSoci = new TextField();
+    @FXML
+    TextField tfCognomSoci = new TextField();
+    @FXML
+    TextField tfEdat = new TextField();
+    @FXML
+    TextField tfDireccio = new TextField();
+    @FXML
+    TextField tfTelefon = new TextField();
 
+    //LLIBRES
+    private Integer idLlibre;
+    private String titol;
+    private Integer nExemplars;
+    private String editorial;
+    private Integer pagines;
+    private Integer any;
+
+    //SOCIS
+    private Integer idSoci;
+    private String nomSoci;
+    private String cognomSoci;
+    private Integer edat;
+    private String direccio;
+    private String telefon;
+
+    /**
+     * Nova stage per a interficie alta de llibre
+     * @throws Exception
+     */
     public void altaLlibre()throws Exception{
         Stage stg = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("gAltaLlibre.fxml"));
@@ -72,13 +95,12 @@ public class Controller {
         //System.out.println(titol + " :: " + nExemplars + " :: " + editorial + " :: " + pagines + " :: " + any);
     }
 
-    public void  fSortir(){
-        Platform.exit();
-    }
-
+    /**
+     * Metode que s'activa quan es clica
+     * al boto -accepta- de alta llibre
+     */
     public void fAltaLlibre() {
         //System.out.println(titol + " :: " + nExemplars + " :: " + editorial + " :: " + pagines + " :: " + any);
-
 
         titol = tfTitolLlibre.getText();
         nExemplars = Integer.valueOf(tfNombreExemplars.getText());
@@ -90,6 +112,151 @@ public class Controller {
         //System.out.println(titol);
 
         DataAccessObject.fDAOaltaLlibre(titol, nExemplars, editorial, pagines, any);
+    }
+
+    /**
+     * Nova stage per les baixes
+     * @throws Exception
+     */
+    public void baixaLlibre()throws Exception{
+        Stage stg = new Stage();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("gBaixaLlibre.fxml"));
+        Parent p = loader.load();
+        stg.setTitle("Baixa Llibre");
+        stg.setScene(new Scene(p, 600, 400));
+        stg.show();
+        System.out.println();
+    }
+
+    /**
+     * Dona de baixa el llibre
+     */
+    public void fBaixaLlibre() {
+
+        idLlibre = Integer.valueOf(tfIdLlibre.getText());
+        titol = tfTitolLlibre.getText();
+        editorial = tfEditorial.getText();
+
+        System.out.println("Id_llibre: " + idLlibre);
+
+        DataAccessObject.fDAObaixaLlibre(idLlibre);
+    }
+
+    /**
+     * Nova stage per a interficie alta de llibre
+     * @throws Exception
+     */
+    public void modifLlibre()throws Exception{
+        Stage stg = new Stage();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("gModifLlibre.fxml"));
+        Parent p = loader.load();
+        stg.setTitle("Modificar Llibre");
+        stg.setScene(new Scene(p, 600, 400));
+        stg.show();
+
+        System.out.println("" + "");
+    }
+
+    public void fModifLlibre() {
+        idLlibre = Integer.valueOf(tfId.getText());
+        titol = tfTitolLlibre.getText();
+        nExemplars = Integer.valueOf(tfNombreExemplars.getText());
+        editorial = tfEditorial.getText();
+        pagines = Integer.valueOf(tfPagines.getText());
+        any = Integer.valueOf(tfAny.getText());
+
+        System.out.println(idLlibre + " :: " + titol + " :: " + nExemplars +
+                " :: " + editorial + " :: " + pagines + " :: " + any);
+
+        DataAccessObject.fDAOModifLlibre(idLlibre, titol, nExemplars, editorial, pagines, any);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /**
+     * Nova stage per a interficie alta de soci
+     * @throws Exception
+     */
+    public void altaSoci()throws Exception{
+        System.out.println("" + "");
+        Stage stg = new Stage();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("gAltaSoci.fxml"));
+        Parent p = loader.load();
+        stg.setTitle("Alta Soci");
+        stg.setScene(new Scene(p, 600, 400));
+        stg.show();
+        System.out.println("" + "");
+    }
+
+    /**
+     * Metode que s'activa quan es clica
+     * al boto -accepta- de alta Soci
+     */
+    public void fAltaSoci() {
+
+        nomSoci = tfNomSoci.getText();
+        cognomSoci = tfCognomSoci.getText();
+        edat = Integer.valueOf(tfEdat.getText());
+        direccio = tfDireccio.getText();
+        telefon = tfTelefon.getText();
+
+        System.out.println(titol + " :: " + nExemplars + " :: " + editorial + " :: " + pagines + " :: " + any);
+        //System.out.println(titol);
+
+        DataAccessObject.fDAOaltaSoci(nomSoci, cognomSoci, edat, direccio, telefon);
+    }
+
+    /**
+     * Nova stage per les baixes
+     * @throws Exception
+     */
+    public void baixaSoci()throws Exception{
+        Stage stg = new Stage();
+        System.out.println();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("gBaixaSoci.fxml"));
+        Parent p = loader.load();
+        stg.setTitle("Baixa Soci");
+        stg.setScene(new Scene(p, 600, 400));
+        stg.show();
+        System.out.println();
+    }
+
+    /**
+     * Dona de baixa el soci
+     */
+    public void fBaixaSoci() {
+
+        idSoci = Integer.valueOf(tfIdLlibre.getText());
+
+        System.out.println("Id_Soci: " + idSoci);
+
+        DataAccessObject.fDAObaixaSoci(idSoci);
+    }
+
+
+
+
+
+
+    public void  fSortir(){
+        Platform.exit();
     }
 
 }
