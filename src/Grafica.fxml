@@ -14,9 +14,9 @@
       <Button fx:id="bBaixaLlibre" layoutX="63.0" layoutY="83.0" mnemonicParsing="false" onAction="#baixaLlibre" text="Baixa llibre" />
       <Button fx:id="bAltaSoci" layoutX="69.0" layoutY="167.0" mnemonicParsing="false" onAction="#altaSoci" text="Alta soci" />
       <Button fx:id="bModifLlibre" layoutX="52.0" layoutY="127.0" mnemonicParsing="false" onAction="#modifLlibre" text="Modificar llibre" />
-      <Button layoutX="74.0" layoutY="289.0" mnemonicParsing="false" text="Button" />
+      <Button fx:id="bConsultes" layoutX="67.0" layoutY="291.0" mnemonicParsing="false" onAction="#consultes" text="Consultes" />
       <Button fx:id="bSortir" layoutX="77.0" layoutY="332.0" mnemonicParsing="false" onAction="#fSortir" text="Sortir" />
-      <Button fx:id="modifLlibre" layoutX="54.0" layoutY="250.0" mnemonicParsing="false" text="Modificar soci" />
+      <Button fx:id="bModifSoci" layoutX="54.0" layoutY="250.0" mnemonicParsing="false" onAction="#modifSoci" text="Modificar soci" />
       <Button fx:id="bBaixaSoci" layoutX="66.0" layoutY="209.0" mnemonicParsing="false" onAction="#baixaSoci" text="Baixa soci" />
       <Label layoutX="53.0" layoutY="14.0" text="MENU PRINCIPAL" />
    </children>

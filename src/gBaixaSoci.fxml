@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
+   <children>
+      <TextField fx:id="tfIdSoci" layoutX="105.0" layoutY="51.0" />
+      <Label layoutX="50.0" layoutY="55.0" text="Id_soci;" />
+      <Button fx:id="bAcceptaBaixa" layoutX="150.0" layoutY="95.0" mnemonicParsing="false" onAction="#fBaixaSoci" text="Accepta" />
+   </children>
+</AnchorPane>

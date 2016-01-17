@@ -21,7 +21,7 @@ public class Jfx extends Application {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Grafica.fxml"));
         Parent root = loader.load();
         primaryStage.setTitle("Biblioteca MC");
-        primaryStage.setScene(new Scene(root, 600, 400));
+        primaryStage.setScene(new Scene(root, 200, 400));
         primaryStage.show();
     }
 }

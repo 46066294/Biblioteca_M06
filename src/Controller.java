@@ -5,9 +5,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.Date;
 
 /**
@@ -53,6 +55,9 @@ public class Controller {
     @FXML
     TextField tfIdLlibre = new TextField();
 //----------------------------------------------------------------------------
+
+    @FXML
+    TextField tfIdSoci = new TextField();
     @FXML
     TextField tfNomSoci = new TextField();
     @FXML
@@ -80,6 +85,9 @@ public class Controller {
     private String direccio;
     private String telefon;
 
+    @FXML
+    TextArea taQuerys = new TextArea();
+
     /**
      * Nova stage per a interficie alta de llibre
      * @throws Exception
@@ -89,7 +97,7 @@ public class Controller {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("gAltaLlibre.fxml"));
         Parent p = loader.load();
         stg.setTitle("Alta Llibre");
-        stg.setScene(new Scene(p, 600, 400));
+        stg.setScene(new Scene(p, 350, 300));
         stg.show();
 
         //System.out.println(titol + " :: " + nExemplars + " :: " + editorial + " :: " + pagines + " :: " + any);
@@ -123,7 +131,7 @@ public class Controller {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("gBaixaLlibre.fxml"));
         Parent p = loader.load();
         stg.setTitle("Baixa Llibre");
-        stg.setScene(new Scene(p, 600, 400));
+        stg.setScene(new Scene(p, 300, 200));
         stg.show();
         System.out.println();
     }
@@ -151,7 +159,7 @@ public class Controller {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("gModifLlibre.fxml"));
         Parent p = loader.load();
         stg.setTitle("Modificar Llibre");
-        stg.setScene(new Scene(p, 600, 400));
+        stg.setScene(new Scene(p, 350, 300));
         stg.show();
 
         System.out.println("" + "");
@@ -200,7 +208,7 @@ public class Controller {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("gAltaSoci.fxml"));
         Parent p = loader.load();
         stg.setTitle("Alta Soci");
-        stg.setScene(new Scene(p, 600, 400));
+        stg.setScene(new Scene(p, 350, 300));
         stg.show();
         System.out.println("" + "");
     }
@@ -233,7 +241,7 @@ public class Controller {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("gBaixaSoci.fxml"));
         Parent p = loader.load();
         stg.setTitle("Baixa Soci");
-        stg.setScene(new Scene(p, 600, 400));
+        stg.setScene(new Scene(p, 300, 200));
         stg.show();
         System.out.println();
     }
@@ -243,17 +251,67 @@ public class Controller {
      */
     public void fBaixaSoci() {
 
-        idSoci = Integer.valueOf(tfIdLlibre.getText());
+        idSoci = Integer.valueOf(tfIdSoci.getText());
 
         System.out.println("Id_Soci: " + idSoci);
 
         DataAccessObject.fDAObaixaSoci(idSoci);
     }
 
+    /**
+     * Nova stage per a interficie modificar soci
+     * @throws Exception
+     */
+    public void modifSoci()throws Exception{
+        Stage stg = new Stage();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("gModifSoci.fxml"));
+        Parent p = loader.load();
+        stg.setTitle("Modificar dades de Soci");
+        stg.setScene(new Scene(p, 350, 300));
+        stg.show();
+        System.out.println();
+        System.out.println();
+
+    }
+
+    public void fModifSoci() {
+        idSoci = Integer.valueOf(tfIdSoci.getText());
+        nomSoci = tfNomSoci.getText();
+        cognomSoci = tfCognomSoci.getText();
+        edat = Integer.valueOf(tfEdat.getText());
+        direccio = tfDireccio.getText();
+        telefon = tfTelefon.getText();
+
+        System.out.println(idSoci + " :: " + nomSoci + " :: " + cognomSoci +
+                " :: " + edat + " :: " + direccio + " :: " + telefon);
+
+        DataAccessObject.fDAOModifSoci(idSoci, nomSoci, cognomSoci, edat, direccio, telefon);
+    }
 
 
+    public void  consultes() throws IOException {
+
+        Stage stg = new Stage();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("gConsultes.fxml"));
+        Parent p = loader.load();
+        stg.setTitle("Modificar dades de Soci");
+        stg.setScene(new Scene(p, 700, 400));
+        stg.show();
+        System.out.println();
 
 
+        //DataAccessObject.fDAOqueryLlibres();
+    }
+
+    public void  queryTotsLlibres() throws IOException {
+        String out = DataAccessObject.fDAOqueryLlibres();
+        taQuerys.setText(out);
+    }
+
+    public void  queryTotsSocis() throws IOException {
+        String out = DataAccessObject.fDAOquerySocis();
+        taQuerys.setText(out);
+    }
 
     public void  fSortir(){
         Platform.exit();
