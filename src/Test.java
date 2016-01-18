@@ -8,6 +8,7 @@ import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
 import sun.rmi.runtime.Log;
 
+import java.util.GregorianCalendar;
 import java.util.Map;
 
 /**
@@ -34,6 +35,7 @@ public class Test {
     }
 
     public static void main(final String[] args) throws Exception {
+
         final Session session = getSession();
         try {
             System.out.println("querying all the managed entities...");

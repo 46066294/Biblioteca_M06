@@ -373,20 +373,28 @@ public class Controller {
         Integer mesInici = Integer.valueOf(tfDataIniciMes.getText());
         mesInici--;
         Integer anyInici = Integer.valueOf(tfDataIniciAny.getText());
-        //dataInici.setMonth(Integer.parseInt(tfDataIniciMes.getText()));
-        //dataInici.setYear(Integer.parseInt(tfDataIniciAny.getText()));
+        anyInici -= 1900;
+
+        //15/8/2000
+        dataInici = new Date();
+        dataInici.setYear(anyInici);
+        dataInici.setMonth(mesInici);
+        dataInici.setDate(diaInici);
 
         Integer diaFinal = Integer.valueOf(tfDataFinalDia.getText());
         Integer mesFinal = Integer.valueOf(tfDataFinalMes.getText());
+        mesFinal--;
         Integer anyFinal = Integer.valueOf(tfDataFinalAny.getText());
-        //dataFinal.setDate(Integer.parseInt(tfDataFinalDia.getText()));
-        //dataFinal.setMonth(Integer.parseInt(tfDataFinalMes.getText()));
-        //dataFinal.setYear(Integer.parseInt(tfDataFinalAny.getText()));
-        GregorianCalendar gc = new GregorianCalendar(anyInici, mesInici, diaInici);
-        dataInici = gc.getGregorianChange();
-        GregorianCalendar gc2 = new GregorianCalendar(anyFinal, mesFinal, diaFinal);
-        dataFinal = gc2.getGregorianChange();
+        anyFinal -= 1900;
 
+        //25/8/2100
+        dataFinal = new Date();
+        dataFinal.setYear(anyFinal);
+        dataFinal.setMonth(mesFinal);
+        dataFinal.setDate(diaFinal);
+
+        System.out.println(dataInici.toString());
+        System.out.println(dataFinal.toString());
         System.out.println(idLlibre + " :: " + idSoci + " :: " + dataInici + " :: " + dataFinal);
 
         DataAccessObject.fDAOaltaNouPrestec(idLlibre, idSoci, dataInici, dataFinal);
