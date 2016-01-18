@@ -38,6 +38,7 @@ public class Test {
         try {
             System.out.println("querying all the managed entities...");
             final Map metadataMap = session.getSessionFactory().getAllClassMetadata();
+
             for (Object key : metadataMap.keySet()) {
                 final ClassMetadata classMetadata = (ClassMetadata) metadataMap.get(key);
                 final String entityName = classMetadata.getEntityName();
@@ -47,7 +48,7 @@ public class Test {
                 for (Object o : query.list()) {
                     System.out.println("  " + o);
                 }
-            }
+            }//for
         } finally {
             session.close();
         }

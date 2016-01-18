@@ -1,5 +1,4 @@
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -8,9 +7,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.util.Date;
+import java.util.GregorianCalendar;
+
 
 /**
  * Created by Mat on 16/01/2016.
@@ -87,6 +87,29 @@ public class Controller {
 
     @FXML
     TextArea taQuerys = new TextArea();
+    @FXML
+    TextField tfQueryTitolLlibre = new TextField();
+    @FXML
+    TextField tfQueryCognomSoci = new TextField();
+
+    //-------------------------------------------------
+    @FXML
+    TextField tfDataIniciDia = new TextField();
+    @FXML
+    TextField tfDataIniciMes = new TextField();
+    @FXML
+    TextField tfDataIniciAny = new TextField();
+
+    @FXML
+    TextField tfDataFinalDia = new TextField();
+    @FXML
+    TextField tfDataFinalMes = new TextField();
+    @FXML
+    TextField tfDataFinalAny = new TextField();
+
+    //PRESTECS
+    private Date dataInici = new Date();
+    private Date dataFinal = new Date();
 
     /**
      * Nova stage per a interficie alta de llibre
@@ -294,7 +317,7 @@ public class Controller {
         Stage stg = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("gConsultes.fxml"));
         Parent p = loader.load();
-        stg.setTitle("Modificar dades de Soci");
+        stg.setTitle("Consultes");
         stg.setScene(new Scene(p, 700, 400));
         stg.show();
         System.out.println();
@@ -313,8 +336,59 @@ public class Controller {
         taQuerys.setText(out);
     }
 
+    public void  queryTitolLlibres() throws IOException {
+        titol = tfQueryTitolLlibre.getText();
+        String out = DataAccessObject.fDAOqueryTitolLlibre(titol);
+        taQuerys.setText(out);
+    }
+
+    public void  queryCognomSoci() throws IOException {
+        cognomSoci = tfQueryCognomSoci.getText();
+        String out = DataAccessObject.fDAOqueryCognomSoci(cognomSoci);
+        taQuerys.setText(out);
+    }
+
     public void  fSortir(){
         Platform.exit();
     }
 
+    public void  prestecs() throws IOException {
+
+        Stage stg = new Stage();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("gPrestecs.fxml"));
+        Parent p = loader.load();
+        stg.setTitle("Nou Prestec");
+        stg.setScene(new Scene(p, 350, 300));
+        stg.show();
+        System.out.println();
+
+
+    }
+
+    public void altaNouPrestec() {
+        idLlibre = Integer.valueOf(tfIdLlibre.getText());
+        idSoci = Integer.valueOf(tfIdSoci.getText());
+
+        Integer diaInici = Integer.valueOf(tfDataIniciDia.getText());
+        Integer mesInici = Integer.valueOf(tfDataIniciMes.getText());
+        mesInici--;
+        Integer anyInici = Integer.valueOf(tfDataIniciAny.getText());
+        //dataInici.setMonth(Integer.parseInt(tfDataIniciMes.getText()));
+        //dataInici.setYear(Integer.parseInt(tfDataIniciAny.getText()));
+
+        Integer diaFinal = Integer.valueOf(tfDataFinalDia.getText());
+        Integer mesFinal = Integer.valueOf(tfDataFinalMes.getText());
+        Integer anyFinal = Integer.valueOf(tfDataFinalAny.getText());
+        //dataFinal.setDate(Integer.parseInt(tfDataFinalDia.getText()));
+        //dataFinal.setMonth(Integer.parseInt(tfDataFinalMes.getText()));
+        //dataFinal.setYear(Integer.parseInt(tfDataFinalAny.getText()));
+        GregorianCalendar gc = new GregorianCalendar(anyInici, mesInici, diaInici);
+        dataInici = gc.getGregorianChange();
+        GregorianCalendar gc2 = new GregorianCalendar(anyFinal, mesFinal, diaFinal);
+        dataFinal = gc2.getGregorianChange();
+
+        System.out.println(idLlibre + " :: " + idSoci + " :: " + dataInici + " :: " + dataFinal);
+
+        DataAccessObject.fDAOaltaNouPrestec(idLlibre, idSoci, dataInici, dataFinal);
+    }
 }

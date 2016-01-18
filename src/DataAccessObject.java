@@ -2,6 +2,7 @@ import org.hibernate.*;
 import org.hibernate.cfg.Configuration;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 
@@ -32,10 +33,7 @@ public class DataAccessObject implements Serializable{
         }
 
         System.out.println(titol + " :: " + nExemplars + " :: " + editorial + " :: " + pagines + " :: " + any);
-        //System.out.println(pkid);
 
-        //Llibre(Integer id_llibre, String titol, Integer nExemplars,
-        //       String editorial, Integer pagines, Date any_edicio)
     }
 
     public static void fDAObaixaLlibre(Integer idLlibre) {
@@ -46,32 +44,9 @@ public class DataAccessObject implements Serializable{
         SessionFactory factory = new Configuration().configure().buildSessionFactory();
         Session session = factory.openSession();
         Transaction tx = null;
-        try{/*
-            Query query = session.createQuery("delete from Llibre where id_llibre=" + idLlibre);
-            //session.delete();
-            //query.setParameter("idLlibre", idLlibre );
-
-            int result = query.executeUpdate();
-            String testQ = query.getQueryString();
-            System.out.println("getQueryString :: " + testQ);
-            System.out.println("result ::" + result);
-
-            if (result > 0) {
-                System.out.println("Llibre " + idLlibre + " esborrat");
-            }
-*/
+        try{
             tx = session.beginTransaction();
             session.delete(llibre);
-            /*
-            String hql = "DELETE FROM Llibre "  +
-                    "WHERE id_llibre=" + idLlibre;
-            Query query = session.createQuery(hql);
-            query.setParameter("Llibre", idLlibre);
-            int result = query.executeUpdate();
-            System.out.println("Rows affected: " + result);
-            String testQ = query.getQueryString();
-            System.out.println("getQueryString :: " + testQ);
-            System.out.println("result ::" + result);*/
             tx.commit();
 
         }catch (HibernateException e){
@@ -199,7 +174,8 @@ public class DataAccessObject implements Serializable{
                     System.out.println("ANY: "+llibre.getAny_edicio() + "\n");
 
                     salida = salida + "ID_LLIBRE: " + llibre.getId_llibre() + "\tTITOL: " + llibre.getTitol() +
-                            "\tANY: "+llibre.getAny_edicio() + "\n";
+                            "\tANY: "+llibre.getAny_edicio() + "\tEDITORIAL: " + llibre.getEditorial() +
+                            "\t N_EXEMPLARS: " + llibre.getnExemplars() + "\tPAGINES: " + llibre.getPagines() + "\n";
                 }
             }
             tx.commit();
@@ -260,7 +236,105 @@ public class DataAccessObject implements Serializable{
         return salida;
     }
 
+    public static String fDAOqueryTitolLlibre(String titola) {
+        String salida = "";
 
+        SessionFactory factory = new Configuration().configure().buildSessionFactory();
+        Session session = factory.openSession();
+        Transaction tx = null;
+        try{
+            tx = session.beginTransaction();
+            String hql = "FROM Llibre WHERE titol ='" + titola + "' ORDER BY id_llibre";
+            System.out.println();
+            Query query = session.createQuery(hql);
+            List results = query.list();
+            if(results.isEmpty()){
+                System.out.println("No hi ha resultats");
+            }else{
+                System.out.println("Resultats:\n---------------");
+
+                for (int i = 0; i < results.size(); i++) {
+                    Llibre llibre = (Llibre) results.get(i);
+
+                    System.out.println("ID_LLIBRE: " + llibre.getId_llibre());
+                    System.out.println("TITOL: " + llibre.getTitol());
+
+                    salida = salida + "ID_LLIBRE: " + llibre.getId_llibre() + "\tTITOL: " + llibre.getTitol() +
+                            "\tANY: "+llibre.getAny_edicio() + "\tEDITORIAL: " + llibre.getEditorial() +
+                            "\t\tN_EXEMPLARS: " + llibre.getnExemplars() + "\t\tPAGINES: " + llibre.getPagines() + "\n";
+                }
+            }
+            tx.commit();
+        }catch (HibernateException e){
+            if(tx!=null) tx.rollback();
+            e.printStackTrace();
+        }finally {
+            session.close();
+            factory.close();
+        }
+
+        return salida;
+    }
+
+
+    public static String fDAOqueryCognomSoci(String cognomSoci) {
+        String salida = "";
+
+        SessionFactory factory = new Configuration().configure().buildSessionFactory();
+        Session session = factory.openSession();
+        Transaction tx = null;
+        try{
+            tx = session.beginTransaction();
+            String hql = "FROM Soci WHERE cognom_soci ='" + cognomSoci + "' ORDER BY cognom_soci";
+            Query query = session.createQuery(hql);
+            List results = query.list();
+            if(results.isEmpty()){
+                System.out.println("No hi ha resultats");
+            }else{
+                System.out.println("Resultats:\n---------------");
+
+                for (int i = 0; i < results.size(); i++) {
+                    Soci soci = (Soci) results.get(i);
+
+                    salida = salida + "ID_SOCI: " + soci.getId_soci() + "\tNOM: " + soci.getNom_soci() +
+                            "\tCOGNOMS: " + soci.getCognom_soci() + "\tEDAT: " +  soci.getEdat() +
+                            "\tDIRECCIO: " + soci.getDireccio() + "\t\tTELEFON: " + soci.getTelefon() + "\n";
+                }
+            }
+            tx.commit();
+        }catch (HibernateException e){
+            if(tx!=null) tx.rollback();
+            e.printStackTrace();
+        }finally {
+            session.close();
+            factory.close();
+        }
+
+        return salida;
+    }
+
+    public static void fDAOaltaNouPrestec(Integer idLlibre, Integer idSoci, Date dataInici, Date dataFinal) {
+        Llibre llibre = new Llibre(idLlibre);
+        Soci soci = new Soci(idSoci);
+        Prestec prestec = new Prestec(llibre, soci, dataInici, dataFinal);
+
+        SessionFactory factory = new Configuration().configure().buildSessionFactory();
+        Session session = factory.openSession();
+        Transaction tx = null;
+        try{
+            tx = session.beginTransaction();
+            session.save(prestec);
+            tx.commit();
+
+            System.out.println("\n...prestec afegit");
+        }catch (HibernateException e){
+            if(tx!=null) tx.rollback();
+            e.printStackTrace();
+        }finally {
+            session.close();
+            factory.close();
+        }
+    }
 }
 
 

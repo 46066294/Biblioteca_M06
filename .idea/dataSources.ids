@@ -10,8 +10,8 @@
       <schema id="2" parent="1" name="public">
         <object-id>2200</object-id>
         <comment>standard public schema</comment>
-        <introspection-state-number>1821</introspection-state-number>
-        <introspection-timestamp>2016-01-17.17:22:35.396</introspection-timestamp>
+        <introspection-state-number>2079</introspection-state-number>
+        <introspection-timestamp>2016-01-18.03:51:50.852</introspection-timestamp>
       </schema>
       <schema id="3" parent="1" name="pg_catalog">
         <object-id>11</object-id>
@@ -20,28 +20,28 @@
         <introspection-timestamp>2016-01-13.00:42:55.252</introspection-timestamp>
       </schema>
       <sequence id="4" parent="2" name="llibre_id_llibre_seq">
-        <object-id>17364</object-id>
-        <state-number>1817</state-number>
+        <object-id>18090</object-id>
+        <state-number>2075</state-number>
       </sequence>
       <sequence id="5" parent="2" name="prestec_id_prestec_seq">
-        <object-id>17375</object-id>
-        <state-number>1818</state-number>
+        <object-id>18101</object-id>
+        <state-number>2076</state-number>
       </sequence>
       <sequence id="6" parent="2" name="soci_id_soci_seq">
-        <object-id>17383</object-id>
-        <state-number>1819</state-number>
+        <object-id>18109</object-id>
+        <state-number>2077</state-number>
       </sequence>
       <table id="7" parent="2" name="llibre">
-        <object-id>17366</object-id>
-        <state-number>1820</state-number>
+        <object-id>18092</object-id>
+        <state-number>2078</state-number>
       </table>
       <table id="8" parent="2" name="prestec">
-        <object-id>17377</object-id>
-        <state-number>1821</state-number>
+        <object-id>18103</object-id>
+        <state-number>2079</state-number>
       </table>
       <table id="9" parent="2" name="soci">
-        <object-id>17385</object-id>
-        <state-number>1821</state-number>
+        <object-id>18111</object-id>
+        <state-number>2079</state-number>
       </table>
       <table id="10" parent="3" name="pg_aggregate">
         <object-id>2600</object-id>
@@ -18926,33 +18926,33 @@
         <bind-function>bpchariclike|char,text</bind-function>
       </operator>
       <column id="3358" parent="7" name="id_llibre">
-        <state-number>1817</state-number>
+        <state-number>2075</state-number>
         <mandatory>1</mandatory>
         <data-type>integer</data-type>
         <default-expression>nextval(&apos;llibre_id_llibre_seq&apos;::regclass)</default-expression>
       </column>
       <column id="3359" parent="7" name="any_edicio">
-        <state-number>1817</state-number>
+        <state-number>2075</state-number>
         <data-type>integer</data-type>
       </column>
       <column id="3360" parent="7" name="editorial">
-        <state-number>1817</state-number>
+        <state-number>2075</state-number>
         <data-type>varchar(255)</data-type>
       </column>
       <column id="3361" parent="7" name="nexemplars">
-        <state-number>1817</state-number>
+        <state-number>2075</state-number>
         <data-type>integer</data-type>
       </column>
       <column id="3362" parent="7" name="pagines">
-        <state-number>1817</state-number>
+        <state-number>2075</state-number>
         <data-type>integer</data-type>
       </column>
       <column id="3363" parent="7" name="titol">
-        <state-number>1817</state-number>
+        <state-number>2075</state-number>
         <data-type>varchar(255)</data-type>
       </column>
       <index id="3364" parent="7" name="llibre_pkey">
-        <object-id>17373</object-id>
+        <object-id>18099</object-id>
         <columns>id_llibre</columns>
         <unique>1</unique>
       </index>
@@ -18962,29 +18962,29 @@
         <primary>1</primary>
       </key>
       <column id="3366" parent="8" name="id_prestec">
-        <state-number>1818</state-number>
+        <state-number>2076</state-number>
         <mandatory>1</mandatory>
         <data-type>integer</data-type>
         <default-expression>nextval(&apos;prestec_id_prestec_seq&apos;::regclass)</default-expression>
       </column>
       <column id="3367" parent="8" name="data_final">
-        <state-number>1818</state-number>
+        <state-number>2076</state-number>
         <data-type>date</data-type>
       </column>
       <column id="3368" parent="8" name="data_inici">
-        <state-number>1818</state-number>
+        <state-number>2076</state-number>
         <data-type>date</data-type>
       </column>
-      <column id="3369" parent="8" name="idllibre_id_llibre">
-        <state-number>1818</state-number>
+      <column id="3369" parent="8" name="id_llibre_id_llibre">
+        <state-number>2076</state-number>
         <data-type>integer</data-type>
       </column>
-      <column id="3370" parent="8" name="idsoci_id_soci">
-        <state-number>1818</state-number>
+      <column id="3370" parent="8" name="id_soci_id_soci">
+        <state-number>2076</state-number>
         <data-type>integer</data-type>
       </column>
       <index id="3371" parent="8" name="prestec_pkey">
-        <object-id>17381</object-id>
+        <object-id>18107</object-id>
         <columns>id_prestec</columns>
         <unique>1</unique>
       </index>
@@ -18993,46 +18993,46 @@
         <underlying-index>prestec_pkey</underlying-index>
         <primary>1</primary>
       </key>
-      <foreign-key id="3373" parent="8" name="fk_diwy4h33nxwohob76wv4u8rrw">
-        <columns>idllibre_id_llibre</columns>
+      <foreign-key id="3373" parent="8" name="fk_suvycusx3sj09qy0jv0yijogy">
+        <columns>id_llibre_id_llibre</columns>
         <ref-key>llibre.llibre_pkey</ref-key>
         <cascade-update-rule>restrict</cascade-update-rule>
         <cascade-delete-rule>restrict</cascade-delete-rule>
       </foreign-key>
-      <foreign-key id="3374" parent="8" name="fk_4t508yoixw5f8yimkq0l3axqd">
-        <columns>idsoci_id_soci</columns>
+      <foreign-key id="3374" parent="8" name="fk_mcelqgigdjfr90f2etwssv1wj">
+        <columns>id_soci_id_soci</columns>
         <ref-key>soci.soci_pkey</ref-key>
         <cascade-update-rule>restrict</cascade-update-rule>
         <cascade-delete-rule>restrict</cascade-delete-rule>
       </foreign-key>
       <column id="3375" parent="9" name="id_soci">
-        <state-number>1819</state-number>
+        <state-number>2077</state-number>
         <mandatory>1</mandatory>
         <data-type>integer</data-type>
         <default-expression>nextval(&apos;soci_id_soci_seq&apos;::regclass)</default-expression>
       </column>
       <column id="3376" parent="9" name="cognom_soci">
-        <state-number>1819</state-number>
-        <data-type>text</data-type>
+        <state-number>2077</state-number>
+        <data-type>varchar(255)</data-type>
       </column>
       <column id="3377" parent="9" name="direccio">
-        <state-number>1819</state-number>
-        <data-type>text</data-type>
+        <state-number>2077</state-number>
+        <data-type>varchar(255)</data-type>
       </column>
       <column id="3378" parent="9" name="edat">
-        <state-number>1819</state-number>
+        <state-number>2077</state-number>
         <data-type>integer</data-type>
       </column>
       <column id="3379" parent="9" name="nom_soci">
-        <state-number>1819</state-number>
-        <data-type>text</data-type>
+        <state-number>2077</state-number>
+        <data-type>varchar(255)</data-type>
       </column>
       <column id="3380" parent="9" name="telefon">
-        <state-number>1819</state-number>
-        <data-type>text</data-type>
+        <state-number>2077</state-number>
+        <data-type>varchar(255)</data-type>
       </column>
       <index id="3381" parent="9" name="soci_pkey">
-        <object-id>17392</object-id>
+        <object-id>18118</object-id>
         <columns>id_soci</columns>
         <unique>1</unique>
       </index>

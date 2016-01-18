@@ -19,13 +19,13 @@ public class Prestec implements Serializable {
 
     @OneToOne(targetEntity = Soci.class, fetch = FetchType.LAZY)
     //@JoinColumn(name = "id_soci")
-    //@Column(name="ID_SOCI")
-    private Soci idSoci = null;
+    //@Column(name="id_soci")
+    private Soci id_Soci = null;
 
     @OneToOne(targetEntity = Llibre.class, fetch = FetchType.LAZY)
     //@JoinColumn(name = "id_llibre")
     //@Column(name="ID_LLIBRE")
-    private Llibre idLlibre = null;
+    private Llibre id_Llibre = null;
 
     @Temporal(TemporalType.DATE)
     //@Column(name="ANY_EDICIO")
@@ -37,13 +37,28 @@ public class Prestec implements Serializable {
 
     public Prestec(){}
 
+    /*Date(int year, int month, int date)
+    Deprecated.
+    As of JDK version 1.1, replaced by Calendar.set(year + 1900, month, date) or GregorianCalendar(year + 1900, month, date).
+    */
 
     public Prestec(Integer id_prestec, Llibre id_llibre,
-                   Soci id_soci){
+                   Soci id_soci, Date data_inici, Date data_final){
 
         this.id_prestec = id_prestec;
-        this.idLlibre = id_llibre;
-        this.idSoci = id_soci;
+        this.id_Llibre = id_llibre;
+        this.id_Soci = id_soci;
+        this.data_inici = data_inici;
+        this.data_final = data_final;
+    }
+
+    public Prestec(Llibre id_llibre,
+                   Soci id_soci, Date data_inici, Date data_final){
+
+        this.id_Llibre = id_llibre;
+        this.id_Soci = id_soci;
+        this.data_inici = data_inici;
+        this.data_final = data_final;
     }
 
     public Integer getId_prestec() {
@@ -55,19 +70,19 @@ public class Prestec implements Serializable {
     }
 
     public Soci getId_soci() {
-        return idSoci;
+        return id_Soci;
     }
 
     public void setId_soci(Soci id_soci) {
-        this.idSoci = id_soci;
+        this.id_Soci = id_soci;
     }
 
     public Llibre getId_llibre() {
-        return idLlibre;
+        return id_Llibre;
     }
 
     public void setId_llibre(Llibre id_llibre) {
-        this.idLlibre = id_llibre;
+        this.id_Llibre = id_llibre;
     }
 
     public Date getData_inici() {
