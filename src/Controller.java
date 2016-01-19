@@ -108,6 +108,9 @@ public class Controller {
     @FXML
     TextField tfDataFinalAny = new TextField();
 
+    @FXML
+    TextField tfQuerypSoc = new TextField();
+
     //PRESTECS
     private Date dataInici = new Date();
     private Date dataFinal = new Date();
@@ -349,8 +352,13 @@ public class Controller {
         taQuerys.setText(out);
     }
 
-    public void queryLlibresPrestats() throws IOException{////////////////////////////////////////////////////
+    public void queryLlibresPrestats() throws IOException{
         String out = DataAccessObject.fDAOqueryLlibresPrestats();
+        taQuerys.setText(out);
+    }
+
+    public void queryLlibresPrestatsAunSoci() throws IOException{
+        String out = DataAccessObject.fDAOqueryLlibresPrestatsAunSoci(Integer.valueOf(tfQuerypSoc.getText()));
         taQuerys.setText(out);
     }
 

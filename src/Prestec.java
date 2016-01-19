@@ -9,23 +9,27 @@ import java.util.Date;
  * Created by Mat on 13/01/2016.
  */
 @Entity
+@Table(name="Prestec")
 public class Prestec implements Serializable {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy= GenerationType.AUTO)
     @NotNull
     //@Column(name="ID_PRESTEC")
     private Integer id_prestec = null;
 
+
     @OneToOne(targetEntity = Soci.class, fetch = FetchType.LAZY)
     //@JoinColumn(name = "id_soci")
-    //@Column(name="id_soci_id_soci")
-    private Soci idSoci = null;
+    //@AttributeOverride(name="caca", column=@Column(name="idSoci_id_soci"))
+    //@Column(name="id_soci")
+    private Soci id_soci = null;
 
     @OneToOne(targetEntity = Llibre.class, fetch = FetchType.LAZY)
     //@JoinColumn(name = "id_llibre")
-    //@Column(name="id_llibre_id_llibre")
-    private Llibre idLlibre = null;
+    //@AttributeOverride(name="coco", column=@Column(name="idLlibre_id_llibre"))
+    //@Column(name="id_llibre")
+    private Llibre id_llibre = null;
 
     @Temporal(TemporalType.DATE)
     //@Column(name="DATA_INICI")
@@ -34,6 +38,7 @@ public class Prestec implements Serializable {
     @Temporal(TemporalType.DATE)
     //@Column(name="DATA_FINAL")
     private Date data_final;
+
 
     public Prestec(){}
 
@@ -46,8 +51,8 @@ public class Prestec implements Serializable {
                    Soci id_soci, Date data_inici, Date data_final){
 
         this.id_prestec = id_prestec;
-        this.idLlibre = id_llibre;
-        this.idSoci = id_soci;
+        this.id_llibre = id_llibre;
+        this.id_soci = id_soci;
         this.data_inici = data_inici;
         this.data_final = data_final;
     }
@@ -55,8 +60,8 @@ public class Prestec implements Serializable {
     public Prestec(Llibre id_llibre,
                    Soci id_soci, Date data_inici, Date data_final){
 
-        this.idLlibre = id_llibre;
-        this.idSoci = id_soci;
+        this.id_llibre = id_llibre;
+        this.id_soci = id_soci;
         this.data_inici = data_inici;
         this.data_final = data_final;
     }
@@ -65,25 +70,32 @@ public class Prestec implements Serializable {
         return id_prestec;
     }
 
-    public void setId_prestec(Integer id_prestec) {
+    protected void setId_prestec(Integer id_prestec) {
         this.id_prestec = id_prestec;
     }
 
     //@Column(name="idSoci")
     public Soci getId_soci() {
-        return idSoci;
+        return id_soci;
+    }
+    public Integer getIdint_soci() {
+        return id_soci.getId_soci();
     }
 
-    public void setId_soci(Soci id_soci) {
-        this.idSoci = id_soci;
+    protected void setId_soci(Soci id_soci) {
+        this.id_soci = id_soci;
     }
 
     public Llibre getId_llibre() {
-        return idLlibre;
+        return id_llibre;
     }
 
-    public void setId_llibre(Llibre id_llibre) {
-        this.idLlibre = id_llibre;
+    public Integer getIdint_llibre() {
+        return id_llibre.getId_llibre();
+    }
+
+    protected void setId_llibre(Llibre id_llibre) {
+        this.id_llibre = id_llibre;
     }
 
     public Date getData_inici() {

@@ -347,7 +347,9 @@ public class DataAccessObject implements Serializable{
             tx = session.beginTransaction();
             System.out.println();
             //String hql = "FROM Prestec JOIN Llibre ON Prestec.id_Llibre=Llibre.id_llibre";
-            String hql = "FROM Prestec JOIN Llibre ON Prestec.idLlibre=(SELECT id_llibre FROM Llibre)";
+            String hql = "FROM Prestec";
+            //, Prestec WHERE Prestec.id_llibre_id_llibre = Llibre.id_llibre
+            //SELECT Llibre.titol FROM Llibre, Prestec WHERE Prestec.idLlibre = Llibre.id_llibre
             //SELECT Llibre.titol FROM Prestec JOIN Llibre ON Prestec.idllibre_id_llibre=Llibre.id_llibre
             Query query = session.createQuery(hql);
             List results = query.list();
@@ -358,11 +360,65 @@ public class DataAccessObject implements Serializable{
                 System.out.println("Resultats:\n----------------");
 
                 for (int i = 0; i < results.size(); i++) {
-                    Soci soci = (Soci) results.get(i);
+                    Prestec prestec = (Prestec)results.get(i);
 
-                    salida = salida + "ID_SOCI: " + soci.getId_soci() + "\tNOM: " + soci.getNom_soci() +
-                            "\tCOGNOMS: " + soci.getCognom_soci() + "\tEDAT: " +  soci.getEdat() +
-                            "\tDIRECCIO: " + soci.getDireccio() + "\t\tTELEFON: " + soci.getTelefon() + "\n";
+                    salida = salida + "ID_SOCI: " + prestec.getIdint_soci() +
+                                    "\tNOM SOCI: " + prestec.getId_soci().getNom_soci() +
+                                    "\t\tID_PRESTEC: " + prestec.getId_prestec() +
+                                    "\t\tID_LLIBRE: " + prestec.getIdint_llibre() +
+                                    "\t\tTITOL: " + prestec.getId_llibre().getTitol() +
+                                    "\t\tEDITORIAL: " + prestec.getId_llibre().getEditorial() +
+                                    "\t\tPAGINES: " + prestec.getId_llibre().getAny_edicio() +
+                                    "\t\tQUANT: " + prestec.getId_llibre().getEditorial() + "\n";
+                }
+            }
+            tx.commit();
+        }catch (HibernateException e){
+            if(tx!=null) tx.rollback();
+            e.printStackTrace();
+        }finally {
+            session.close();
+            factory.close();
+        }
+
+        return salida;
+    }
+
+    public static String fDAOqueryLlibresPrestatsAunSoci(Integer idsoci) {
+        Soci soci = new Soci(idsoci);
+        String aux = String.valueOf(soci.getId_soci());
+        String salida = "";
+
+        SessionFactory factory = new Configuration().configure().buildSessionFactory();
+        Session session = factory.openSession();
+        Transaction tx = null;
+        try{
+            tx = session.beginTransaction();
+            System.out.println();
+            //String hql = "FROM Prestec JOIN Llibre ON Prestec.id_Llibre=Llibre.id_llibre";
+            String hql = "FROM Prestec, Soci WHERE Prestec.id_soci=Soci.id_soci";
+            //, Prestec WHERE Prestec.id_llibre_id_llibre = Llibre.id_llibre
+            //SELECT Llibre.titol FROM Llibre, Prestec WHERE Prestec.idLlibre = Llibre.id_llibre
+            //SELECT Llibre.titol FROM Prestec JOIN Llibre ON Prestec.idllibre_id_llibre=Llibre.id_llibre
+            Query query = session.createQuery(hql);
+            System.out.println();
+            List results = query.list();
+            if(results.isEmpty()){
+                System.out.println("No hi ha resultats");
+            }else{
+                System.out.println();
+                System.out.println("Resultats:\n----------------");
+
+                for (int i = 0; i < results.size(); i++) {
+                    Prestec prestec = (Prestec)results.get(i);
+
+                    salida = salida + "ID_SOCI: " + prestec.getIdint_soci() +
+                            "\tNOM SOCI: " + prestec.getId_soci().getNom_soci() +
+                            "\t\tID_LLIBRE: " + prestec.getIdint_llibre() +
+                            "\t\tTITOL: " + prestec.getId_llibre().getTitol() +
+                            "\t\tEDITORIAL: " + prestec.getId_llibre().getEditorial() +
+                            "\t\tPAGINES: " + prestec.getId_llibre().getAny_edicio() +
+                            "\t\tQUANT: " + prestec.getId_llibre().getEditorial() + "\n";
                 }
             }
             tx.commit();

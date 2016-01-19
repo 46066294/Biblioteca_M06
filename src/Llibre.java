@@ -12,27 +12,27 @@ import java.io.Serializable;
 public class Llibre implements Serializable{
 
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    //@Column(name="id_llibre")
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    @Column(name="id_llibre")
     @NotNull
     private Integer id_llibre;
 
     //@Lob
-    //@Column(name="titol")
+    @Column(name="titol")
     private String titol = null;
 
-    //@Column(name="N_EXEMPLARS")
+    @Column(name="nExemplars")
     private Integer nExemplars = null;
 
     //@Lob
-    //@Column(name="editorial")
+    @Column(name="editorial")
     private String editorial = null;
 
-    //@Column(name="pagines")
+    @Column(name="pagines")
     private Integer pagines = null;
 
     //@Temporal(TemporalType.DATE)
-    //@Column(name="any_edicio")
+    @Column(name="any_edicio")
     private Integer any_edicio = null;
 
 
