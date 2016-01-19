@@ -335,6 +335,47 @@ public class DataAccessObject implements Serializable{
             factory.close();
         }
     }
+
+
+    public static String fDAOqueryLlibresPrestats() {
+        String salida = "";
+
+        SessionFactory factory = new Configuration().configure().buildSessionFactory();
+        Session session = factory.openSession();
+        Transaction tx = null;
+        try{
+            tx = session.beginTransaction();
+            System.out.println();
+            //String hql = "FROM Prestec JOIN Llibre ON Prestec.id_Llibre=Llibre.id_llibre";
+            String hql = "FROM Prestec JOIN Llibre ON Prestec.idLlibre=(SELECT id_llibre FROM Llibre)";
+            //SELECT Llibre.titol FROM Prestec JOIN Llibre ON Prestec.idllibre_id_llibre=Llibre.id_llibre
+            Query query = session.createQuery(hql);
+            List results = query.list();
+            if(results.isEmpty()){
+                System.out.println("No hi ha resultats");
+            }else{
+                System.out.println();
+                System.out.println("Resultats:\n----------------");
+
+                for (int i = 0; i < results.size(); i++) {
+                    Soci soci = (Soci) results.get(i);
+
+                    salida = salida + "ID_SOCI: " + soci.getId_soci() + "\tNOM: " + soci.getNom_soci() +
+                            "\tCOGNOMS: " + soci.getCognom_soci() + "\tEDAT: " +  soci.getEdat() +
+                            "\tDIRECCIO: " + soci.getDireccio() + "\t\tTELEFON: " + soci.getTelefon() + "\n";
+                }
+            }
+            tx.commit();
+        }catch (HibernateException e){
+            if(tx!=null) tx.rollback();
+            e.printStackTrace();
+        }finally {
+            session.close();
+            factory.close();
+        }
+
+        return salida;
+    }
 }
 
 

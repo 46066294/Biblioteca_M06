@@ -19,16 +19,16 @@ public class Prestec implements Serializable {
 
     @OneToOne(targetEntity = Soci.class, fetch = FetchType.LAZY)
     //@JoinColumn(name = "id_soci")
-    //@Column(name="id_soci")
-    private Soci id_Soci = null;
+    //@Column(name="id_soci_id_soci")
+    private Soci idSoci = null;
 
     @OneToOne(targetEntity = Llibre.class, fetch = FetchType.LAZY)
     //@JoinColumn(name = "id_llibre")
-    //@Column(name="ID_LLIBRE")
-    private Llibre id_Llibre = null;
+    //@Column(name="id_llibre_id_llibre")
+    private Llibre idLlibre = null;
 
     @Temporal(TemporalType.DATE)
-    //@Column(name="ANY_EDICIO")
+    //@Column(name="DATA_INICI")
     private Date data_inici;
 
     @Temporal(TemporalType.DATE)
@@ -46,8 +46,8 @@ public class Prestec implements Serializable {
                    Soci id_soci, Date data_inici, Date data_final){
 
         this.id_prestec = id_prestec;
-        this.id_Llibre = id_llibre;
-        this.id_Soci = id_soci;
+        this.idLlibre = id_llibre;
+        this.idSoci = id_soci;
         this.data_inici = data_inici;
         this.data_final = data_final;
     }
@@ -55,8 +55,8 @@ public class Prestec implements Serializable {
     public Prestec(Llibre id_llibre,
                    Soci id_soci, Date data_inici, Date data_final){
 
-        this.id_Llibre = id_llibre;
-        this.id_Soci = id_soci;
+        this.idLlibre = id_llibre;
+        this.idSoci = id_soci;
         this.data_inici = data_inici;
         this.data_final = data_final;
     }
@@ -69,20 +69,21 @@ public class Prestec implements Serializable {
         this.id_prestec = id_prestec;
     }
 
+    //@Column(name="idSoci")
     public Soci getId_soci() {
-        return id_Soci;
+        return idSoci;
     }
 
     public void setId_soci(Soci id_soci) {
-        this.id_Soci = id_soci;
+        this.idSoci = id_soci;
     }
 
     public Llibre getId_llibre() {
-        return id_Llibre;
+        return idLlibre;
     }
 
     public void setId_llibre(Llibre id_llibre) {
-        this.id_Llibre = id_llibre;
+        this.idLlibre = id_llibre;
     }
 
     public Date getData_inici() {

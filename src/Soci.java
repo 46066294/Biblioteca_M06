@@ -14,27 +14,27 @@ public class Soci implements Serializable {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @NotNull
     //@Type(type="integer")
-    @Column(name="id_soci")
+    //@Column(name="id_soci")
     private Integer id_soci = null;
 
     //@Lob
-    @Column(name="nom_soci")
+    //@Column(name="nom_soci")
     private String nom_soci = null;
 
     //@Lob
-    @Column(name="cognom_soci")
+    //@Column(name="cognom_soci")
     private String cognom_soci = null;
 
     //@Type(type="integer")
-    @Column(name="edat")
+    //@Column(name="edat")
     private Integer edat = null;
 
     //@Lob
-    @Column(name="direccio")
+    //@Column(name="direccio")
     private String direccio = null;
 
     //@Lob
-    @Column(name="telefon")
+    //@Column(name="telefon")
     private String telefon = null;
 
     public Soci(Integer id_soci, String nom_soci,

@@ -3,6 +3,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -348,6 +349,11 @@ public class Controller {
         taQuerys.setText(out);
     }
 
+    public void queryLlibresPrestats() throws IOException{////////////////////////////////////////////////////
+        String out = DataAccessObject.fDAOqueryLlibresPrestats();
+        taQuerys.setText(out);
+    }
+
     public void  fSortir(){
         Platform.exit();
     }
@@ -365,38 +371,63 @@ public class Controller {
 
     }
 
+    public void pantallaError(){
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText("Dada incorrecte");
+        alert.setContentText("Dies --> Entre 1 i 31\nMes --> Entre 1 i 12" +
+                "\nAny inicial --> Any actual\nAny final --> Superior a any inicial");
+        alert.showAndWait();
+    }
+
     public void altaNouPrestec() {
         idLlibre = Integer.valueOf(tfIdLlibre.getText());
         idSoci = Integer.valueOf(tfIdSoci.getText());
 
         Integer diaInici = Integer.valueOf(tfDataIniciDia.getText());
         Integer mesInici = Integer.valueOf(tfDataIniciMes.getText());
-        mesInici--;
         Integer anyInici = Integer.valueOf(tfDataIniciAny.getText());
-        anyInici -= 1900;
-
-        //15/8/2000
-        dataInici = new Date();
-        dataInici.setYear(anyInici);
-        dataInici.setMonth(mesInici);
-        dataInici.setDate(diaInici);
+        mesInici--;
 
         Integer diaFinal = Integer.valueOf(tfDataFinalDia.getText());
         Integer mesFinal = Integer.valueOf(tfDataFinalMes.getText());
         mesFinal--;
         Integer anyFinal = Integer.valueOf(tfDataFinalAny.getText());
-        anyFinal -= 1900;
 
-        //25/8/2100
+        if(anyInici < 0)anyInici -= 1899;
+        else anyInici -= 1900;
+
+        dataInici = new Date();
+        dataInici.setYear(anyInici);
+        dataInici.setMonth(mesInici);
+        dataInici.setDate(diaInici);
+
+        if(anyFinal < 0)anyFinal -= 1899;
+        else anyFinal -= 1900;
+
         dataFinal = new Date();
         dataFinal.setYear(anyFinal);
         dataFinal.setMonth(mesFinal);
         dataFinal.setDate(diaFinal);
 
-        System.out.println(dataInici.toString());
-        System.out.println(dataFinal.toString());
-        System.out.println(idLlibre + " :: " + idSoci + " :: " + dataInici + " :: " + dataFinal);
+        Date anyActual = new Date();
+        if(diaInici > 0 && diaFinal > 0 && diaInici < 32 && diaFinal < 32 && mesInici >= 0 && mesFinal >= 0 &&
+                mesInici <= 11 && mesFinal <= 11 && anyInici == anyActual.getYear() && anyFinal >= anyActual.getYear()){
+        //if(mesInici.toString().matches("[0-11]") && diaInici.toString().matches("[1-31]") &&
+                //mesFinal.toString().matches("[0-11]") && diaFinal.toString().matches("[1-31]")){
 
-        DataAccessObject.fDAOaltaNouPrestec(idLlibre, idSoci, dataInici, dataFinal);
+            System.out.println(dataInici.toString());
+            System.out.println(dataFinal.toString());
+            System.out.println(idLlibre + " :: " + idSoci + " :: " + dataInici + " :: " + dataFinal);
+
+            DataAccessObject.fDAOaltaNouPrestec(idLlibre, idSoci, dataInici, dataFinal);
+        }
+        else {
+            pantallaError();
+            System.out.println(idLlibre + " :: " + idSoci + " :: " + dataInici + " :: " + dataFinal);
+            //System.out.println(dataInici);
+
+        }
+
     }
 }
