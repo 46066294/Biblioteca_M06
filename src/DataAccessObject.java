@@ -346,11 +346,8 @@ public class DataAccessObject implements Serializable{
         try{
             tx = session.beginTransaction();
             System.out.println();
-            //String hql = "FROM Prestec JOIN Llibre ON Prestec.id_Llibre=Llibre.id_llibre";
             String hql = "FROM Prestec";
-            //, Prestec WHERE Prestec.id_llibre_id_llibre = Llibre.id_llibre
-            //SELECT Llibre.titol FROM Llibre, Prestec WHERE Prestec.idLlibre = Llibre.id_llibre
-            //SELECT Llibre.titol FROM Prestec JOIN Llibre ON Prestec.idllibre_id_llibre=Llibre.id_llibre
+
             Query query = session.createQuery(hql);
             List results = query.list();
             if(results.isEmpty()){
@@ -384,9 +381,8 @@ public class DataAccessObject implements Serializable{
         return salida;
     }
 
-    public static String fDAOqueryLlibresPrestatsAunSoci(Integer idsoci) {
-        Soci soci = new Soci(idsoci);
-        String aux = String.valueOf(soci.getId_soci());
+    public static String fDAOqueryLlibresPrestatsAunSoci(Integer id) {
+        Soci soci = new Soci(id);
         String salida = "";
 
         SessionFactory factory = new Configuration().configure().buildSessionFactory();
@@ -395,13 +391,9 @@ public class DataAccessObject implements Serializable{
         try{
             tx = session.beginTransaction();
             System.out.println();
-            //String hql = "FROM Prestec JOIN Llibre ON Prestec.id_Llibre=Llibre.id_llibre";
-            String hql = "FROM Prestec, Soci WHERE Prestec.id_soci=Soci.id_soci";
-            //, Prestec WHERE Prestec.id_llibre_id_llibre = Llibre.id_llibre
-            //SELECT Llibre.titol FROM Llibre, Prestec WHERE Prestec.idLlibre = Llibre.id_llibre
-            //SELECT Llibre.titol FROM Prestec JOIN Llibre ON Prestec.idllibre_id_llibre=Llibre.id_llibre
+            String hql = "FROM Prestec, Soci WHERE Prestec.id_soci=:y";
             Query query = session.createQuery(hql);
-            System.out.println();
+            query.setParameter("y", soci);
             List results = query.list();
             if(results.isEmpty()){
                 System.out.println("No hi ha resultats");

@@ -10,8 +10,8 @@
       <schema id="2" parent="1" name="public">
         <object-id>2200</object-id>
         <comment>standard public schema</comment>
-        <introspection-state-number>2331</introspection-state-number>
-        <introspection-timestamp>2016-01-19.13:37:50.935</introspection-timestamp>
+        <introspection-state-number>2377</introspection-state-number>
+        <introspection-timestamp>2016-01-22.15:03:56.455</introspection-timestamp>
       </schema>
       <schema id="3" parent="1" name="pg_catalog">
         <object-id>11</object-id>
@@ -24,16 +24,16 @@
         <state-number>2302</state-number>
       </sequence>
       <table id="5" parent="2" name="llibre">
-        <object-id>18549</object-id>
-        <state-number>2330</state-number>
+        <object-id>18690</object-id>
+        <state-number>2376</state-number>
       </table>
       <table id="6" parent="2" name="prestec">
-        <object-id>18557</object-id>
-        <state-number>2331</state-number>
+        <object-id>18698</object-id>
+        <state-number>2377</state-number>
       </table>
       <table id="7" parent="2" name="soci">
-        <object-id>18562</object-id>
-        <state-number>2331</state-number>
+        <object-id>18703</object-id>
+        <state-number>2377</state-number>
       </table>
       <table id="8" parent="3" name="pg_aggregate">
         <object-id>2600</object-id>
@@ -18918,32 +18918,32 @@
         <bind-function>bpchariclike|char,text</bind-function>
       </operator>
       <column id="3356" parent="5" name="id_llibre">
-        <state-number>2327</state-number>
+        <state-number>2373</state-number>
         <mandatory>1</mandatory>
         <data-type>integer</data-type>
       </column>
       <column id="3357" parent="5" name="any_edicio">
-        <state-number>2327</state-number>
+        <state-number>2373</state-number>
         <data-type>integer</data-type>
       </column>
       <column id="3358" parent="5" name="editorial">
-        <state-number>2327</state-number>
+        <state-number>2373</state-number>
         <data-type>varchar(255)</data-type>
       </column>
       <column id="3359" parent="5" name="nexemplars">
-        <state-number>2327</state-number>
+        <state-number>2373</state-number>
         <data-type>integer</data-type>
       </column>
       <column id="3360" parent="5" name="pagines">
-        <state-number>2327</state-number>
+        <state-number>2373</state-number>
         <data-type>integer</data-type>
       </column>
       <column id="3361" parent="5" name="titol">
-        <state-number>2327</state-number>
+        <state-number>2373</state-number>
         <data-type>varchar(255)</data-type>
       </column>
       <index id="3362" parent="5" name="llibre_pkey">
-        <object-id>18555</object-id>
+        <object-id>18696</object-id>
         <columns>id_llibre</columns>
         <unique>1</unique>
       </index>
@@ -18953,28 +18953,28 @@
         <primary>1</primary>
       </key>
       <column id="3364" parent="6" name="id_prestec">
-        <state-number>2328</state-number>
+        <state-number>2374</state-number>
         <mandatory>1</mandatory>
         <data-type>integer</data-type>
       </column>
       <column id="3365" parent="6" name="data_final">
-        <state-number>2328</state-number>
+        <state-number>2374</state-number>
         <data-type>date</data-type>
       </column>
       <column id="3366" parent="6" name="data_inici">
-        <state-number>2328</state-number>
+        <state-number>2374</state-number>
         <data-type>date</data-type>
       </column>
-      <column id="3367" parent="6" name="idllibre_id_llibre">
-        <state-number>2328</state-number>
+      <column id="3367" parent="6" name="id_llibre_id_llibre">
+        <state-number>2374</state-number>
         <data-type>integer</data-type>
       </column>
-      <column id="3368" parent="6" name="idsoci_id_soci">
-        <state-number>2328</state-number>
+      <column id="3368" parent="6" name="id_soci_id_soci">
+        <state-number>2374</state-number>
         <data-type>integer</data-type>
       </column>
       <index id="3369" parent="6" name="prestec_pkey">
-        <object-id>18560</object-id>
+        <object-id>18701</object-id>
         <columns>id_prestec</columns>
         <unique>1</unique>
       </index>
@@ -18983,45 +18983,45 @@
         <underlying-index>prestec_pkey</underlying-index>
         <primary>1</primary>
       </key>
-      <foreign-key id="3371" parent="6" name="fk_diwy4h33nxwohob76wv4u8rrw">
-        <columns>idllibre_id_llibre</columns>
+      <foreign-key id="3371" parent="6" name="fk_hr7dnqfnqxi7pi1lh6hcaylcx">
+        <columns>id_llibre_id_llibre</columns>
         <ref-key>llibre.llibre_pkey</ref-key>
         <cascade-update-rule>restrict</cascade-update-rule>
         <cascade-delete-rule>restrict</cascade-delete-rule>
       </foreign-key>
-      <foreign-key id="3372" parent="6" name="fk_4t508yoixw5f8yimkq0l3axqd">
-        <columns>idsoci_id_soci</columns>
+      <foreign-key id="3372" parent="6" name="fk_sx5t05jiyen7accenhvf4eiwn">
+        <columns>id_soci_id_soci</columns>
         <ref-key>soci.soci_pkey</ref-key>
         <cascade-update-rule>restrict</cascade-update-rule>
         <cascade-delete-rule>restrict</cascade-delete-rule>
       </foreign-key>
       <column id="3373" parent="7" name="id_soci">
-        <state-number>2329</state-number>
+        <state-number>2375</state-number>
         <mandatory>1</mandatory>
         <data-type>integer</data-type>
       </column>
       <column id="3374" parent="7" name="cognom_soci">
-        <state-number>2329</state-number>
+        <state-number>2375</state-number>
         <data-type>varchar(255)</data-type>
       </column>
       <column id="3375" parent="7" name="direccio">
-        <state-number>2329</state-number>
+        <state-number>2375</state-number>
         <data-type>varchar(255)</data-type>
       </column>
       <column id="3376" parent="7" name="edat">
-        <state-number>2329</state-number>
+        <state-number>2375</state-number>
         <data-type>integer</data-type>
       </column>
       <column id="3377" parent="7" name="nom_soci">
-        <state-number>2329</state-number>
+        <state-number>2375</state-number>
         <data-type>varchar(255)</data-type>
       </column>
       <column id="3378" parent="7" name="telefon">
-        <state-number>2329</state-number>
+        <state-number>2375</state-number>
         <data-type>varchar(255)</data-type>
       </column>
       <index id="3379" parent="7" name="soci_pkey">
-        <object-id>18568</object-id>
+        <object-id>18709</object-id>
         <columns>id_soci</columns>
         <unique>1</unique>
       </index>
