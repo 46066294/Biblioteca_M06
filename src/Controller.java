@@ -1,4 +1,5 @@
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -206,25 +207,6 @@ public class Controller {
         DataAccessObject.fDAOModifLlibre(idLlibre, titol, nExemplars, editorial, pagines, any);
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     /**
      * Nova stage per a interficie alta de soci
      * @throws Exception
@@ -322,7 +304,7 @@ public class Controller {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("gConsultes.fxml"));
         Parent p = loader.load();
         stg.setTitle("Consultes");
-        stg.setScene(new Scene(p, 700, 400));
+        stg.setScene(new Scene(p, 1100, 400));
         stg.show();
         System.out.println();
 
@@ -382,9 +364,9 @@ public class Controller {
     public void pantallaError(){
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Error");
-        alert.setHeaderText("Dada incorrecte");
+        alert.setHeaderText("Dada incorrecte per a nou prestec");
         alert.setContentText("Dies --> Entre 1 i 31\nMes --> Entre 1 i 12" +
-                "\nAny inicial --> Any actual\nAny final --> Superior a any inicial");
+                "\nAny inicial --> Any actual\nAny final --> Igual o superior a any inicial");
         alert.showAndWait();
     }
 
@@ -437,5 +419,19 @@ public class Controller {
 
         }
 
+    }
+
+    public void fAjuda() {
+        //dialeg info bbdd buida
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Ajuda i desenvolupament");
+        alert.setHeaderText("BIBLIOTECA_MC v1.0\nAdministració de bases de dades mitjançant" +
+                "\nframework Hibernate per a M06 Acces a dades." +
+                "\n\nTot el tractament de la informacio segueix les " +
+                "\nnormatives de integritat relacional standard " +
+                "\nper a base de dades.");
+        alert.setContentText("Desenvolupat per Marc Cano Gener-2016 amb:" +
+                "\nSDK: 8\npostgresql-9.4.1207\nHibernate core-4.2.2\nJavaFX");
+        alert.showAndWait();
     }
 }

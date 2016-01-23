@@ -11,3 +11,5 @@
         <property name="nombre" column="name"/>
     </class>
 </hibernate-mapping>
+
+<!--  Fitcher de mostra per si es vol mapejar amb xml (mala practica)  -->

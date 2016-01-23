@@ -6,19 +6,19 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
    <children>
-      <TextField fx:id="tfNomSoci" layoutX="105.0" layoutY="99.0" />
-      <TextField fx:id="tfCognomSoci" layoutX="105.0" layoutY="124.0" />
-      <TextField fx:id="tfDireccio" layoutX="105.0" layoutY="174.0" />
-      <TextField fx:id="tfEdat" layoutX="105.0" layoutY="149.0" />
-      <TextField fx:id="tfTelefon" layoutX="105.0" layoutY="199.0" />
-      <Label layoutX="66.0" layoutY="103.0" text="Nom:" />
-      <Label layoutX="42.0" layoutY="128.0" text="Cognoms:" />
-      <Label layoutX="50.0" layoutY="178.0" text="Direccio:" />
-      <Label layoutX="69.0" layoutY="153.0" text="Edat:" />
-      <Label layoutX="54.0" layoutY="203.0" text="Telefon:" />
-      <Button fx:id="bAccepta" layoutX="151.0" layoutY="248.0" mnemonicParsing="false" onAction="#fModifSoci" text="Accepta" />
-      <Label layoutX="102.0" layoutY="14.0" text="IDENTIFICADOR DE SOCI (id):" />
-      <TextField fx:id="tfIdSoci" layoutX="105.0" layoutY="37.0" />
-      <Label layoutX="104.0" layoutY="73.0" text="MODIFICAR DADES DE SOCI:" />
+      <TextField fx:id="tfNomSoci" layoutX="95.0" layoutY="123.0" />
+      <TextField fx:id="tfCognomSoci" layoutX="95.0" layoutY="148.0" />
+      <TextField fx:id="tfDireccio" layoutX="95.0" layoutY="198.0" />
+      <TextField fx:id="tfEdat" layoutX="95.0" layoutY="173.0" />
+      <TextField fx:id="tfTelefon" layoutX="95.0" layoutY="223.0" />
+      <Label layoutX="56.0" layoutY="127.0" text="Nom:" />
+      <Label layoutX="26.0" layoutY="152.0" text="Cognoms:" />
+      <Label layoutX="35.0" layoutY="202.0" text="Direccio:" />
+      <Label layoutX="57.0" layoutY="177.0" text="Edat:" />
+      <Label layoutX="41.0" layoutY="227.0" text="Telefon:" />
+      <Button fx:id="bAccepta" layoutX="140.0" layoutY="259.0" mnemonicParsing="false" onAction="#fModifSoci" text="Accepta" />
+      <Label layoutX="99.0" layoutY="35.0" text="Identificador de soci (id):" />
+      <TextField fx:id="tfIdSoci" layoutX="95.0" layoutY="54.0" />
+      <Label layoutX="88.0" layoutY="101.0" text="MODIFICAR DADES DE SOCI:" />
    </children>
 </AnchorPane>

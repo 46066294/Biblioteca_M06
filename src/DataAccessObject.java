@@ -1,3 +1,4 @@
+import javafx.scene.control.Alert;
 import org.hibernate.*;
 import org.hibernate.cfg.Configuration;
 
@@ -7,7 +8,7 @@ import java.util.List;
 
 
 /**
- * Created by Mat on 16/01/2016.
+ * Created by Marc Cano on 16/01/2016.
  */
 public class DataAccessObject implements Serializable{
 
@@ -162,6 +163,14 @@ public class DataAccessObject implements Serializable{
             List results = query.list();
             if(results.isEmpty()){
                 System.out.println("No hi ha resultats");
+
+                //dialeg info bbdd buida
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Resultat de consulta");
+                alert.setHeaderText("NO HI HAN DADES");
+                alert.setContentText("Introdueixi algun llibre mitjançant \"Alta llibre\"");
+                alert.showAndWait();
+
             }else{
                 System.out.println("Resultats:\n---------------");
                 //for (int i = 0; i < results.size(); i++) {System.out.println(results.get(i));}
@@ -206,6 +215,14 @@ public class DataAccessObject implements Serializable{
             List results = query.list();
             if(results.isEmpty()){
                 System.out.println("No hi ha resultats");
+
+                //dialeg info bbdd buida
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Resultat de consulta");
+                alert.setHeaderText("NO HI HAN DADES");
+                alert.setContentText("Introdueixi algun soci mitjançant \"Alta soci\"");
+                alert.showAndWait();
+
             }else{
                 System.out.println("Resultats:\n---------------");
 
@@ -220,7 +237,7 @@ public class DataAccessObject implements Serializable{
                     System.out.println("TELEFON: " + soci.getTelefon());
 
                     salida = salida + "ID_SOCI: " + soci.getId_soci() + "\tNOM: " + soci.getNom_soci() +
-                            "\tCOGNOMS: " + soci.getCognom_soci() + "\tEDAT: " +  soci.getEdat() +
+                            "\tCOGNOMS: " + soci.getCognom_soci() + "\t\tEDAT: " +  soci.getEdat() +
                             "\tDIRECCIO: " + soci.getDireccio() + "\t\tTELEFON: " + soci.getTelefon() + "\n";
                 }
             }
@@ -250,6 +267,14 @@ public class DataAccessObject implements Serializable{
             List results = query.list();
             if(results.isEmpty()){
                 System.out.println("No hi ha resultats");
+
+                //dialeg info bbdd buida
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Resultat de consulta");
+                alert.setHeaderText("NO HI HAN DADES");
+                alert.setContentText("Introdueixi algun llibre mitjançant \"Alta llibre\"");
+                alert.showAndWait();
+
             }else{
                 System.out.println("Resultats:\n---------------");
 
@@ -290,6 +315,14 @@ public class DataAccessObject implements Serializable{
             List results = query.list();
             if(results.isEmpty()){
                 System.out.println("No hi ha resultats");
+
+                //dialeg info bbdd buida
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Resultat de consulta");
+                alert.setHeaderText("NO HI HAN DADES");
+                alert.setContentText("Introdueixi algun soci mitjançant \"Alta soci\"");
+                alert.showAndWait();
+
             }else{
                 System.out.println("Resultats:\n---------------");
 
@@ -352,6 +385,14 @@ public class DataAccessObject implements Serializable{
             List results = query.list();
             if(results.isEmpty()){
                 System.out.println("No hi ha resultats");
+
+                //dialeg info bbdd buida
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Resultat de consulta");
+                alert.setHeaderText("NO HI HAN DADES");
+                alert.setContentText("Introdueixi algun prestec mitjançant \"Nou prestec\"");
+                alert.showAndWait();
+
             }else{
                 System.out.println();
                 System.out.println("Resultats:\n----------------");
