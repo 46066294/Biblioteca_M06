@@ -425,7 +425,7 @@ public class Controller {
         //dialeg info bbdd buida
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Ajuda i desenvolupament");
-        alert.setHeaderText("BIBLIOTECA_MC v1.0\nAdministració de bases de dades mitjançant" +
+        alert.setHeaderText("BIBLIOTECA_MC v1.0\nAdministració de base de dades mitjançant" +
                 "\nframework Hibernate per a M06 Acces a dades." +
                 "\n\nTot el tractament de la informacio segueix les " +
                 "\nnormatives de integritat relacional standard " +

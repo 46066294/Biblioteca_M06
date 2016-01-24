@@ -402,12 +402,13 @@ public class DataAccessObject implements Serializable{
 
                     salida = salida + "ID_SOCI: " + prestec.getIdint_soci() +
                                     "\tNOM SOCI: " + prestec.getId_soci().getNom_soci() +
+                                    "\tCOGNOM SOCI: " + prestec.getId_soci().getCognom_soci() +
                                     "\t\tID_PRESTEC: " + prestec.getId_prestec() +
                                     "\t\tID_LLIBRE: " + prestec.getIdint_llibre() +
                                     "\t\tTITOL: " + prestec.getId_llibre().getTitol() +
                                     "\t\tEDITORIAL: " + prestec.getId_llibre().getEditorial() +
                                     "\t\tPAGINES: " + prestec.getId_llibre().getAny_edicio() +
-                                    "\t\tQUANT: " + prestec.getId_llibre().getEditorial() + "\n";
+                                    "\tQUANT: " + prestec.getId_llibre().getnExemplars() + "\n";
                 }
             }
             tx.commit();

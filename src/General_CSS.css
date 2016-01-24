@@ -1,0 +1,26 @@
+
+
+.root {
+    -fx-app-background: #e3f3ff;
+    -fx-background-color: -fx-app-background;
+    -fx-padding: 0;
+}
+
+.label {
+    -fx-background-color: #e3f3ff;
+    -fx-font-size: 10pt;
+    -fx-font-family: "Comic Sans";
+    -fx-text-fill: black;
+    -fx-opacity: 0.6;
+}
+
+.text-area{
+    -fx-app-background: blue;
+    -fx-background-color: -fx-app-background;
+    -fx-border-color: purple;
+
+}
+
+.button{
+    -fx-background-color: #b1b0ff;
+}
