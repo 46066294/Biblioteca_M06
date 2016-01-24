@@ -1,16 +1,16 @@
 
 
 .root {
-    -fx-app-background: #e3f3ff;
+    -fx-app-background: #3c3f41;
     -fx-background-color: -fx-app-background;
     -fx-padding: 0;
 }
 
 .label {
-    -fx-background-color: #e3f3ff;
+    -fx-background-color: #3c3f41;
     -fx-font-size: 10pt;
-    -fx-font-family: "Comic Sans";
-    -fx-text-fill: black;
+    -fx-font-family: "Arial";
+    -fx-text-fill: white;
     -fx-opacity: 0.6;
 }
 
@@ -22,5 +22,7 @@
 }
 
 .button{
-    -fx-background-color: #b1b0ff;
+    -fx-background-color: #3c3f41;
+    -fx-border-color: white;
+    -fx-text-fill: white;
 }
